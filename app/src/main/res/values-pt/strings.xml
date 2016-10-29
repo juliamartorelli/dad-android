@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">App</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Fechar</string>
+
+    <string name="menu_my_profile">Meu perfil</string>
+    <string name="menu_logout">Sair</string>
+
+    <string name="fragment_title_profile">Meu perfil</string>
+
+    <string name="button_next">NEXT</string>
+    <string name="button_ok">OK</string>
+
+    <string name="error_network_timeout_title">Tempo de limite excedido</string>
+    <string name="error_network_timeout_message">Parece que o servidor está demorando a responder, tente novamente mais tarde.</string>
+    <string name="error_network_title">Temos um problema com a conexão</string>
+    <string name="error_network_message">Parece que temos uma instabilidade com nossos servidores no momento. Por favor, tente novamente mais tarde.</string>
+    <string name="error_unknown_error_title">Temos um problema com a conexão</string>
+    <string name="error_unknown_error_message">Parece que nossos servidores estão demorando um pouco a responderem, isso pode ter sido causado por uma baixa conectividade ou um erro em nossos servidores. Por favor, tente novamente mais tarde.</string>
+    <string name="error_saving_profile">Houve um erro ao salvar seu perfil. Por favor, tente novamente…</string>
+
+    <string name="dialog_login_in">Entrando…</string>
+    <string name="dialog_login_fail">Houve um erro ao tentar efetuar o login. Tente novamente.</string>
+    <string name="dialog_saving_profile">Salvando perfil…</string>
+    <string name="dialog_getting_profile">Obtendo perfil…</string>
+    <string name="dialog_getting_profile_fail">Houve um erro ao tentar obter seu perfil. Por favor, tente novamente.</string>
+
+</resources>

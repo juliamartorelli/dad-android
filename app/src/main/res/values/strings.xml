@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">App</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
+    <string name="menu_my_profile">My profile</string>
+    <string name="menu_logout">Logout</string>
+
+    <string name="fragment_title_profile">My profile</string>
+
+    <string name="button_next">NEXT</string>
+    <string name="button_ok">OK</string>
+
+    <string name="error_network_timeout_title">Network timeout</string>
+    <string name="error_network_timeout_message">Looks like the server is taking to long to respond, please try again in sometime.</string>
+    <string name="error_network_title">We have a network problem</string>
+    <string name="error_network_message">Looks like you have an unstable network at the moment, please try again when network stabilizes.</string>
+    <string name="error_unknown_error_title">We have an connection problem</string>
+    <string name="error_unknown_error_message">Looks like the server is taking to long to respond, this can be caused by either poor connectivity or an error with our servers. Please try again in a while</string>
+    <string name="error_saving_profile">There was an error saving your profile. Please try again later…</string>
+
+    <string name="dialog_login_in">Logging in…</string>
+    <string name="dialog_login_fail">There was a problem logging in. Try again.</string>
+    <string name="dialog_saving_profile">Saving profile…</string>
+    <string name="dialog_getting_profile">Getting profile…</string>
+    <string name="dialog_getting_profile_fail">There was a problem getting your profile. Please try again later</string>
+
+</resources>
