@@ -77,7 +77,7 @@ public class Client {
                             final SuccessListener<User> successListener,
                             final Response.ErrorListener errorListener) {
 
-        final String resources = "/login";
+        final String resources = "/Autenticacao";
         request(User.class, Request.Method.GET, resources, user, new Response.Listener<User>() {
 
             @Override
