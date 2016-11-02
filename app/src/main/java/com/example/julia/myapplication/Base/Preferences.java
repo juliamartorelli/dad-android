@@ -21,7 +21,8 @@ public class Preferences {
 
         if (instance == null) {
             instance = new Preferences();
-            instance.sharedPreferences = CustomApplication.getInstance().getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+            CustomApplication ca = CustomApplication.getInstance();
+            instance.sharedPreferences = ca.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
         }
         return instance;
     }

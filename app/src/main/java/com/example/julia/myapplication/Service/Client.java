@@ -1,6 +1,8 @@
 package com.example.julia.myapplication.Service;
 
 import android.content.Context;
+import android.util.Base64;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -10,7 +12,9 @@ import com.example.julia.myapplication.Base.Preferences;
 import com.example.julia.myapplication.BuildConfig;
 import com.example.julia.myapplication.Model.User;
 import com.google.gson.Gson;
+
 import java.lang.reflect.Type;
+import java.util.HashMap;
 
 
 //Classe de chamadas do cliente a API
@@ -77,8 +81,12 @@ public class Client {
                             final SuccessListener<User> successListener,
                             final Response.ErrorListener errorListener) {
 
+        String valueEncoded = new String(Base64.encode((user.getEmail() + user.getPassword()).getBytes(), 0));
+        HashMap<String, String> args = new HashMap<>();
+        args.put("Authorization", valueEncoded);
+
         final String resources = "/Autenticacao";
-        request(User.class, Request.Method.GET, resources, user, new Response.Listener<User>() {
+        request(User.class, Request.Method.GET, resources, args, new Response.Listener<User>() {
 
             @Override
             public void onResponse(User user) {

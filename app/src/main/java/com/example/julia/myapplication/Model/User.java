@@ -29,6 +29,8 @@ public class User {
     @SerializedName("id")
     private String id;
 
+    public User (){}
+
     public User(String email, String password){
         this.email = email;
         this.password = password;
@@ -72,5 +74,13 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

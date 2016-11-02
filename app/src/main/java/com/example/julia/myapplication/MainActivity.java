@@ -1,5 +1,6 @@
 package com.example.julia.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,28 +14,32 @@ import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.edit_text_email)
-    private EditText editTextEmail;
+    EditText editTextEmail;
 
     @BindView(R.id.edit_text_password)
-    private EditText editTextPassword;
+    EditText editTextPassword;
 
     @BindView(R.id.button)
-    private Button button;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                //login();
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -47,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
             public void onSuccess(User response) {
-                //TODO: activity home
+                Intent it = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(it);
             }
         }, new ErrorListener() {
             @Override
