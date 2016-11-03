@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //login();
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
+                login();
             }
         });
 
@@ -47,19 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void login() {
 
-        final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+        final User user = new User("julia", "12345");
+        //final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
-        Client.getInstance().login(user, new SuccessListener<User>() {
+        Client.getInstance().login(user, new SuccessListener<String>() {
             @Override
-            public void onSuccess(User response) {
+            public void onSuccess(String response) {
                 Intent it = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(it);
-            }
+            startActivity(it);
+        }
         }, new ErrorListener() {
             @Override
-            public void onError(RestError restError) {
-                //TODO: qual vai ser a mensagem?
-            }
+            public void onError(RestError restError) { }
         });
     }
 }

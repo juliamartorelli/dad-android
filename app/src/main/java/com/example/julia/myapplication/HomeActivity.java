@@ -2,13 +2,28 @@ package com.example.julia.myapplication;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.julia.myapplication.Adapter.ListAdapter;
 import com.example.julia.myapplication.Base.Preferences;
-import com.example.julia.myapplication.Model.Evento;
+import com.example.julia.myapplication.Model.Event;
+import com.example.julia.myapplication.Service.Client;
+import com.example.julia.myapplication.Service.ErrorListener;
+import com.example.julia.myapplication.Service.RestError;
+import com.example.julia.myapplication.Service.SuccessListener;
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.internal.ObjectConstructor;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -16,6 +31,7 @@ public class HomeActivity extends Activity {
 
     @BindView(R.id.textView_user)
     TextView textViewUser;
+    private List<Event> events;
 
     private ListView listView;
 
@@ -31,21 +47,23 @@ public class HomeActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.recipe_list_view);
 
-        final ArrayList<Evento> list = new ArrayList<>();
-        list.add(new Evento("Evento do bozo"));
-        list.add(new Evento("Evento do jao"));
-        list.add(new Evento("Evento do mijo"));
-        list.add(new Evento("Evento do cocozao"));
-        list.add(new Evento("Evento do chatuba"));
-        list.add(new Evento("Evento do delicinha"));
-        list.add(new Evento("Evento do cachorrao"));
-        list.add(new Evento("Evento do satanas"));
-        list.add(new Evento("Evento do capetao"));
-        list.add(new Evento("Evento do pe de cabra"));
-        list.add(new Evento("Evento do tranca rua"));
+        Client.getInstance().events(new SuccessListener<Object>() {
+            @Override
+            public void onSuccess(Object response) {
 
-        ArrayAdapter adapter = new ListAdapter(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
+                String responseString = response.toString();
+                Gson gson = new Gson();
+                events = (List<Event>)gson.fromJson(responseString, new TypeToken<List<Event>>(){}.getType());
+
+                ListAdapter adapter = new ListAdapter(HomeActivity.this, events);
+                listView.setAdapter(adapter);
+            }
+        }, new ErrorListener() {
+            @Override
+            public void onError(RestError restError) {
+
+            }
+        });
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.julia.myapplication.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Localidade {
+public class Locality {
 
     @Expose
     @SerializedName("id")

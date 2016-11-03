@@ -12,14 +12,12 @@ import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class GenericRequest<T> extends JsonRequest<T> {
 
     public static final int INITIAL_TIMEOUT_MS = 5000;
     private static String authToken;
-    private static String userId;
     private Response.ErrorListener errorListener;
     private Response.Listener<T> successListener;
     private Map<String, String> headers = new HashMap<>();
@@ -45,12 +43,8 @@ public class GenericRequest<T> extends JsonRequest<T> {
 
         User user = Preferences.getInstance().getCurrentUser();
         GenericRequest.setAuthToken(user.getAuthorization());
-        GenericRequest.setUserId(user.getId());
         if (user.getAuthorization() != null) {
-            headers.put("authorization", user.getAuthorization());
-        }
-        if (user.getId() != null) {
-            headers.put("user-id", user.getId());
+            headers.put("Authorization", "Basic " + user.getAuthorization());
         }
         return headers;
     }
@@ -64,11 +58,6 @@ public class GenericRequest<T> extends JsonRequest<T> {
     public static void setAuthToken(String token) {
 
         GenericRequest.authToken = token;
-    }
-
-    public static void setUserId(String userId) {
-
-        GenericRequest.userId = userId;
     }
 
     @Override

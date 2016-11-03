@@ -3,10 +3,12 @@ package com.example.julia.myapplication.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Evento {
+import java.io.Serializable;
+
+public class Event  {
 
     @Expose
-    @SerializedName("id")
+    @SerializedName("Id")
     private String id;
 
     @Expose
@@ -34,12 +36,14 @@ public class Evento {
     private String valor;
 
     @Expose
-    @SerializedName("Localidade")
-    private Localidade localidade;
+    @SerializedName("IdLocalidade")
+    private String idLocalidade;
 
-    public Evento (String nome) {
+    public Event(String nome) {
         this.nome = nome;
     }
+
+    public Event() {}
 
     public String getId() {
         return id;
@@ -97,11 +101,11 @@ public class Evento {
         this.valor = valor;
     }
 
-    public Localidade getLocalidade() {
-        return localidade;
+    public String getIdLocalidade() {
+        return idLocalidade;
     }
 
-    public void setLocalidade(Localidade localidade) {
-        this.localidade = localidade;
+    public void setIdLocalidade(String idLocalidade) {
+        this.idLocalidade = idLocalidade;
     }
 }

@@ -5,12 +5,11 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    card_view:elevation="3dp"
+    android:layout_height="120dp"
+    card_view:cardElevation="3dp"
     android:background="#FFFFFF"
-    android:layout_marginTop="4dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginLeft="8dp">
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image_view"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:layout_margin="8dp"
             />

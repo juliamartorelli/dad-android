@@ -48,22 +48,16 @@ public class Preferences {
     public void setUserPreferences(final User user) {
 
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(USER_MOBILE_ID, user.getId());
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
-        editor.putString(USER_LAST_NAME, user.getLastName());
-        editor.putString(USER_EMAIL, user.getEmail());
         editor.apply();
     }
 
     public User getCurrentUser() {
 
         User user = new User();
-        user.setId(sharedPreferences.getString(USER_MOBILE_ID, ""));
         user.setName(sharedPreferences.getString(USER_NAME, ""));
         user.setAuthorization(sharedPreferences.getString(USER_AUTH, ""));
-        user.setLastName(sharedPreferences.getString(USER_LAST_NAME, ""));
-        user.setEmail(sharedPreferences.getString(USER_EMAIL, ""));
         return user;
     }
 

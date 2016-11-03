@@ -10,11 +10,13 @@ import com.android.volley.toolbox.Volley;
 import com.example.julia.myapplication.Base.CustomApplication;
 import com.example.julia.myapplication.Base.Preferences;
 import com.example.julia.myapplication.BuildConfig;
+import com.example.julia.myapplication.Model.Event;
 import com.example.julia.myapplication.Model.User;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 
 
 //Classe de chamadas do cliente a API
@@ -42,7 +44,6 @@ public class Client {
         if (Preferences.getInstance().hasUserPreferences()) {
             User user = Preferences.getInstance().getCurrentUser();
             GenericRequest.setAuthToken(user.getAuthorization());
-            GenericRequest.setUserId(user.getId());
         }
     }
 
@@ -73,30 +74,32 @@ public class Client {
         GenericRequest request = new GenericRequest<>(type, method, finalUrl,
                 requestBodyString, successListener, errorListener);
 
-        request.setShouldCache(false);
+        //request.setShouldCache(false);
         queue.add(request);
     }
 
     public void login(User user,
-                            final SuccessListener<User> successListener,
+                            final SuccessListener<String> successListener,
                             final Response.ErrorListener errorListener) {
 
-        String valueEncoded = new String(Base64.encode((user.getEmail() + user.getPassword()).getBytes(), 0));
-        HashMap<String, String> args = new HashMap<>();
-        args.put("Authorization", valueEncoded);
+        user.setAuthorization(new String(Base64.encode((user.getEmail() + ":" + user.getPassword()).getBytes(), 0)).replace("\n",""));
+        Preferences.getInstance().clear();
+        Preferences.getInstance().setUserPreferences(user);
 
         final String resources = "/Autenticacao";
-        request(User.class, Request.Method.GET, resources, args, new Response.Listener<User>() {
+        request(String.class, Request.Method.GET, resources, null, new Response.Listener<String>() {
 
             @Override
-            public void onResponse(User user) {
-
-                Preferences.getInstance().clear();
-                Preferences.getInstance().setUserPreferences(user);
-
+            public void onResponse(String user) {
                 successListener.onSuccess(user);
             }
 
         }, errorListener);
+    }
+
+    public void events(final SuccessListener<Object> successListener,
+                       final Response.ErrorListener errorListener) {
+        final String resources = "/Evento";
+        request(Object.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 }
