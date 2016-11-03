@@ -15,6 +15,7 @@ import com.example.julia.myapplication.Model.User;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -97,9 +98,9 @@ public class Client {
         }, errorListener);
     }
 
-    public void events(final SuccessListener<Object> successListener,
+    public void events(final SuccessListener<ArrayList<Event>> successListener,
                        final Response.ErrorListener errorListener) {
         final String resources = "/Evento";
-        request(Object.class, Request.Method.GET, resources, null, successListener, errorListener);
+        request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 }

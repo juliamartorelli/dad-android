@@ -12,6 +12,7 @@ import com.example.julia.myapplication.Service.ErrorListener;
 import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.internal.ObjectConstructor;
 import com.google.gson.reflect.TypeToken;
@@ -47,13 +48,18 @@ public class HomeActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.recipe_list_view);
 
-        Client.getInstance().events(new SuccessListener<Object>() {
+        Client.getInstance().events(new SuccessListener<ArrayList<Event>>() {
             @Override
-            public void onSuccess(Object response) {
+            public void onSuccess(ArrayList<Event> response) {
 
-                String responseString = response.toString();
                 Gson gson = new Gson();
-                events = (List<Event>)gson.fromJson(responseString, new TypeToken<List<Event>>(){}.getType());
+                events = new ArrayList<Event>();
+
+                for (Object o : response) {
+                    JsonObject jsonObject = gson.toJsonTree(o).getAsJsonObject();
+                    Event event = new Gson().fromJson(jsonObject, Event.class);
+                    events.add(event);
+                }
 
                 ListAdapter adapter = new ListAdapter(HomeActivity.this, events);
                 listView.setAdapter(adapter);
