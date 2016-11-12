@@ -3,8 +3,6 @@ package com.example.julia.myapplication.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
 public class Event  {
 
     @Expose
@@ -13,11 +11,11 @@ public class Event  {
 
     @Expose
     @SerializedName("Nome")
-    private String nome;
+    private String name;
 
     @Expose
     @SerializedName("UrlImagem")
-    private String urlImagem;
+    private String urlImage;
 
     @Expose
     @SerializedName("DataEvento")
@@ -25,22 +23,22 @@ public class Event  {
 
     @Expose
     @SerializedName("Ativo")
-    private String ativo;
+    private String active;
 
     @Expose
     @SerializedName("Quantidade")
-    private String quantidade;
+    private String quantity;
 
     @Expose
     @SerializedName("Valor")
-    private String valor;
+    private String price;
 
     @Expose
     @SerializedName("IdLocalidade")
-    private String idLocalidade;
+    private String idLocality;
 
     public Event(String nome) {
-        this.nome = nome;
+        this.name = nome;
     }
 
     public Event() {}
@@ -53,20 +51,20 @@ public class Event  {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUrlImagem() {
-        return urlImagem;
+    public String getUrlImage() {
+        return urlImage;
     }
 
-    public void setUrlImagem(String urlImagem) {
-        this.urlImagem = urlImagem;
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public String getData() {
@@ -77,35 +75,35 @@ public class Event  {
         this.data = data;
     }
 
-    public String getAtivo() {
-        return ativo;
+    public String getActive() {
+        return active;
     }
 
-    public void setAtivo(String ativo) {
-        this.ativo = ativo;
+    public void setActive(String active) {
+        this.active = active;
     }
 
-    public String getQuantidade() {
-        return quantidade;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public String getValor() {
-        return valor;
+    public String getPrice() {
+        return price;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getIdLocalidade() {
-        return idLocalidade;
+    public String getIdLocality() {
+        return idLocality;
     }
 
-    public void setIdLocalidade(String idLocalidade) {
-        this.idLocalidade = idLocalidade;
+    public void setIdLocality(String idLocality) {
+        this.idLocality = idLocality;
     }
 }

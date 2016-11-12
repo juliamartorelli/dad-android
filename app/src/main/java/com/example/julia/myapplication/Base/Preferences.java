@@ -11,7 +11,6 @@ public class Preferences {
     private static final String USER_MOBILE_ID = "user_id";
     private static final String USER_AUTH = "user_auth";
     private static final String USER_NAME = "user_name";
-    private static final String USER_LAST_NAME = "user_last_name";
     private static final String USER_EMAIL = "user_email";
 
     private static Preferences instance;
@@ -40,7 +39,6 @@ public class Preferences {
         editor.putString(USER_MOBILE_ID, user.getId());
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
-        editor.putString(USER_LAST_NAME, user.getLastName());
         editor.putString(USER_EMAIL, user.getEmail());
         editor.apply();
     }

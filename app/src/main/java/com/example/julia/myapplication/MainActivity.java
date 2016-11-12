@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         final User user = new User("julia", "12345");
         //final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
-        Client.getInstance().login(user, new SuccessListener<String>() {
+        Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
-            public void onSuccess(String response) {
+            public void onSuccess(User response) {
                 Intent it = new Intent(MainActivity.this, HomeActivity.class);
-            startActivity(it);
+                startActivity(it);
         }
         }, new ErrorListener() {
             @Override

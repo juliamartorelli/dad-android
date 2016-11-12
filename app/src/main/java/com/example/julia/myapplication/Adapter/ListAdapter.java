@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.julia.myapplication.Model.Event;
 import com.example.julia.myapplication.R;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
@@ -70,11 +69,11 @@ public class ListAdapter extends BaseAdapter {
         if(events.size() <= 0) {
             holder.nomeEvento.setText("Não há eventos.");
         } else {
-            holder.nomeEvento.setText(event.getNome());
+            holder.nomeEvento.setText(event.getName());
             holder.local.setText(event.getData());
 
             final ImageLoader imageLoader = ImageLoader.getInstance();
-            imageLoader.loadImage(event.getUrlImagem(), new SimpleImageLoadingListener() {
+            imageLoader.loadImage(event.getUrlImage(), new SimpleImageLoadingListener() {
                 public void onLoadingComplete(final String imageUri, final View view, final Bitmap loadedImage) {
 
                     holder.image.setImageBitmap(loadedImage);

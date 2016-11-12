@@ -1,7 +1,10 @@
 package com.example.julia.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.julia.myapplication.Adapter.ListAdapter;
@@ -43,8 +46,7 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        Preferences pr = new Preferences();
-        textViewUser.setText("Bem vindo(a), Maria das Neves"/* + pr.getCurrentUser().getName() + "!"*/);
+        textViewUser.setText("Bem vindo(a)," + Preferences.getInstance().getCurrentUser().getName() + "!");
 
         listView = (ListView) findViewById(R.id.recipe_list_view);
 
@@ -70,6 +72,16 @@ public class HomeActivity extends Activity {
 
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        final Event event = events.get(position);
+                        final Intent intent = new Intent(HomeActivity.this, EventActivity.class);
+                        intent.putExtra("eventId", event.getId());
+                        startActivity(intent);
+                    }
+                });
     }
 
 }

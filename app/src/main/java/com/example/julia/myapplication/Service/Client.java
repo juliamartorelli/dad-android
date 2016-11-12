@@ -80,7 +80,7 @@ public class Client {
     }
 
     public void login(User user,
-                            final SuccessListener<String> successListener,
+                            final SuccessListener<User> successListener,
                             final Response.ErrorListener errorListener) {
 
         user.setAuthorization(new String(Base64.encode((user.getEmail() + ":" + user.getPassword()).getBytes(), 0)).replace("\n",""));
@@ -88,11 +88,12 @@ public class Client {
         Preferences.getInstance().setUserPreferences(user);
 
         final String resources = "/Autenticacao";
-        request(String.class, Request.Method.GET, resources, null, new Response.Listener<String>() {
+        request(User.class, Request.Method.GET, resources, null, new Response.Listener<User>() {
 
             @Override
-            public void onResponse(String user) {
-                successListener.onSuccess(user);
+            public void onResponse(User response) {
+                successListener.onSuccess(response);
+                Preferences.getInstance().setUserPreferences(response);
             }
 
         }, errorListener);
@@ -100,7 +101,16 @@ public class Client {
 
     public void events(final SuccessListener<ArrayList<Event>> successListener,
                        final Response.ErrorListener errorListener) {
+
         final String resources = "/Evento";
         request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
+    }
+
+    public void event(final String id,
+                      final SuccessListener<Event> successListener,
+                      final Response.ErrorListener errorListener) {
+
+        final String resources = "/Evento/" + id;
+        request(Event.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 }
