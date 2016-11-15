@@ -16,7 +16,7 @@ import com.example.julia.myapplication.Service.SuccessListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.edit_text_email)
     EditText editTextEmail;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
             public void onSuccess(User response) {
-                Intent it = new Intent(MainActivity.this, HomeActivity.class);
+                Intent it = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(it);
         }
         }, new ErrorListener() {

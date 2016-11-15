@@ -106,7 +106,7 @@ public class Client {
         request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 
-    public void event(final String id,
+    public void event(final int id,
                       final SuccessListener<Event> successListener,
                       final Response.ErrorListener errorListener) {
 

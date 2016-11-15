@@ -7,7 +7,7 @@ public class Event  {
 
     @Expose
     @SerializedName("Id")
-    private String id;
+    private Integer id;
 
     @Expose
     @SerializedName("Nome")
@@ -35,7 +35,7 @@ public class Event  {
 
     @Expose
     @SerializedName("IdLocalidade")
-    private String idLocality;
+    private Integer idLocality;
 
     public Event(String nome) {
         this.name = nome;
@@ -43,11 +43,11 @@ public class Event  {
 
     public Event() {}
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -99,11 +99,11 @@ public class Event  {
         this.price = price;
     }
 
-    public String getIdLocality() {
+    public Integer getIdLocality() {
         return idLocality;
     }
 
-    public void setIdLocality(String idLocality) {
+    public void setIdLocality(Integer idLocality) {
         this.idLocality = idLocality;
     }
 }
