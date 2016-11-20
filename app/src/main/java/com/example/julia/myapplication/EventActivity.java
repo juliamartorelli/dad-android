@@ -148,7 +148,7 @@ public class EventActivity extends Activity implements View.OnClickListener {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (success) {
-                            Intent intent = new Intent(EventActivity.this, EventListActivity.class);
+                            Intent intent = new Intent(EventActivity.this, MenuDrawerActivity.class);
                             startActivity(intent);
                             finish();
                         }

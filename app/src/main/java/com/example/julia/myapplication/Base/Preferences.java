@@ -49,6 +49,7 @@ public class Preferences {
         editor.putString(USER_ID, user.getId());
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
+        editor.putString(USER_EMAIL, user.getEmail());
         editor.apply();
     }
 
@@ -58,6 +59,7 @@ public class Preferences {
         user.setId(sharedPreferences.getString(USER_ID, ""));
         user.setName(sharedPreferences.getString(USER_NAME, ""));
         user.setAuthorization(sharedPreferences.getString(USER_AUTH, ""));
+        user.setEmail(sharedPreferences.getString(USER_EMAIL, ""));
         return user;
     }
 
