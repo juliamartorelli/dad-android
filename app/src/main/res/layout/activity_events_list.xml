@@ -3,11 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ececec">
 
 
     <TextView
-        android:id="@+id/textView_user"
+        android:id="@+id/text_view_user"
         style="@style/text"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -16,7 +17,7 @@
         android:layout_marginLeft="8dp"/>
 
     <TextView
-        android:id="@+id/textView_eventos"
+        android:id="@+id/text_view_events"
         style="@style/text"
         android:alpha="1"
         android:text="Eventos disponíveis"
@@ -26,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_below="@+id/textView_user" />
+        android:layout_below="@+id/text_view_user" />
 
     <ListView
         android:id="@+id/recipe_list_view"
@@ -34,8 +35,6 @@
         android:layout_width="match_parent"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/textView_eventos"
-        android:layout_alignStart="@+id/textView_eventos" />
+        android:layout_below="@id/text_view_events"/>
 
 </RelativeLayout>

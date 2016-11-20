@@ -11,6 +11,8 @@ import com.example.julia.myapplication.Base.CustomApplication;
 import com.example.julia.myapplication.Base.Preferences;
 import com.example.julia.myapplication.BuildConfig;
 import com.example.julia.myapplication.Model.Event;
+import com.example.julia.myapplication.Model.Locality;
+import com.example.julia.myapplication.Model.Ticket;
 import com.example.julia.myapplication.Model.User;
 import com.google.gson.Gson;
 
@@ -112,5 +114,21 @@ public class Client {
 
         final String resources = "/Evento/" + id;
         request(Event.class, Request.Method.GET, resources, null, successListener, errorListener);
+    }
+
+    public void locality(final int id,
+                      final SuccessListener<Locality> successListener,
+                      final Response.ErrorListener errorListener) {
+
+        final String resources = "/Localidade/" + id;
+        request(Locality.class, Request.Method.GET, resources, null, successListener, errorListener);
+    }
+
+    public void buyTicket(Ticket ticket,
+                         final SuccessListener<Ticket> successListener,
+                         final Response.ErrorListener errorListener) {
+
+        final String resources = "/Ingresso";
+        request(Ticket.class, Request.Method.POST, resources, ticket, successListener, errorListener);
     }
 }

@@ -19,7 +19,7 @@ public class Event  {
 
     @Expose
     @SerializedName("DataEvento")
-    private String data;
+    private String date;
 
     @Expose
     @SerializedName("Ativo")
@@ -67,12 +67,12 @@ public class Event  {
         this.urlImage = urlImage;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String data) {
+        this.date = data;
     }
 
     public String getActive() {

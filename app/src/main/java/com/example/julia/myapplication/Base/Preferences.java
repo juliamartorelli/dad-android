@@ -8,7 +8,7 @@ import com.example.julia.myapplication.Model.User;
 public class Preferences {
 
     private static final String SHARED_PREFERENCES = "shared_preferences";
-    private static final String USER_MOBILE_ID = "user_id";
+    private static final String USER_ID = "user_id";
     private static final String USER_AUTH = "user_auth";
     private static final String USER_NAME = "user_name";
     private static final String USER_EMAIL = "user_email";
@@ -36,7 +36,7 @@ public class Preferences {
     public void updateCurrentUser(final User user) {
 
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(USER_MOBILE_ID, user.getId());
+        editor.putString(USER_ID, user.getId());
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
         editor.putString(USER_EMAIL, user.getEmail());
@@ -46,6 +46,7 @@ public class Preferences {
     public void setUserPreferences(final User user) {
 
         final SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USER_ID, user.getId());
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
         editor.apply();
@@ -54,6 +55,7 @@ public class Preferences {
     public User getCurrentUser() {
 
         User user = new User();
+        user.setId(sharedPreferences.getString(USER_ID, ""));
         user.setName(sharedPreferences.getString(USER_NAME, ""));
         user.setAuthorization(sharedPreferences.getString(USER_AUTH, ""));
         return user;

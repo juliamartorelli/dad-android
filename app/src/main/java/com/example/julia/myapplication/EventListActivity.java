@@ -16,39 +16,31 @@ import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.internal.LinkedTreeMap;
-import com.google.gson.internal.ObjectConstructor;
-import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends Activity {
+public class EventListActivity extends Activity {
 
-    @BindView(R.id.textView_user)
+    @BindView(R.id.text_view_user)
     TextView textViewUser;
-    private List<Event> events;
 
-    private ListView listView;
+    @BindView(R.id.recipe_list_view)
+    ListView listView;
+
+    private List<Event> events;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_events_list);
         ButterKnife.bind(this);
 
         textViewUser.setText("Bem vindo(a)," + Preferences.getInstance().getCurrentUser().getName() + "!");
-
-        listView = (ListView) findViewById(R.id.recipe_list_view);
 
         Client.getInstance().events(new SuccessListener<ArrayList<Event>>() {
             @Override
@@ -63,7 +55,7 @@ public class HomeActivity extends Activity {
                     events.add(event);
                 }
 
-                ListAdapter adapter = new ListAdapter(HomeActivity.this, events);
+                ListAdapter adapter = new ListAdapter(EventListActivity.this, events);
                 listView.setAdapter(adapter);
             }
         }, new ErrorListener() {
@@ -77,7 +69,7 @@ public class HomeActivity extends Activity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         final Event event = events.get(position);
-                        final Intent intent = new Intent(HomeActivity.this, EventActivity.class);
+                        final Intent intent = new Intent(EventListActivity.this, EventActivity.class);
                         intent.putExtra("eventId", event.getId());
                         startActivity(intent);
                     }

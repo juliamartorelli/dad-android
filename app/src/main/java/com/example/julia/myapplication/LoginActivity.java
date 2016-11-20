@@ -51,8 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
             public void onSuccess(User response) {
-                Intent it = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent it = new Intent(LoginActivity.this, EventListActivity.class);
                 startActivity(it);
+                finish();
         }
         }, new ErrorListener() {
             @Override

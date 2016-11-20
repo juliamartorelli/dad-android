@@ -70,7 +70,7 @@ public class ListAdapter extends BaseAdapter {
             holder.nomeEvento.setText("Não há eventos.");
         } else {
             holder.nomeEvento.setText(event.getName());
-            holder.local.setText(event.getData());
+            holder.local.setText(event.getDate());
 
             final ImageLoader imageLoader = ImageLoader.getInstance();
             imageLoader.loadImage(event.getUrlImage(), new SimpleImageLoadingListener() {
@@ -90,6 +90,5 @@ public class ListAdapter extends BaseAdapter {
         public TextView nomeEvento;
         public TextView local;
         public ImageView image;
-
     }
 }
