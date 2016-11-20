@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".EventListActivity"/>
         <activity android:name=".EventActivity"/>
+        <activity android:name=".SignUpUserActivity"/>
     </application>
 
 </manifest>
