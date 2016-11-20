@@ -130,12 +130,12 @@ public class EventActivity extends Activity implements View.OnClickListener {
         Client.getInstance().buyTicket(ticket, new SuccessListener<Ticket>() {
             @Override
             public void onSuccess(Ticket response) {
-                showEventDialog("Succeso", "Ingresso comprado com sucesso! :)", true);
+                showEventDialog("Sucesso", "Ingresso comprado com sucesso! :)", true);
             }
         }, new ErrorListener() {
             @Override
             public void onError(RestError restError) {
-                showEventDialog("Oops...", "Houve um problema ao comprar o ingresso. Tente novamente em instantes", false);
+                showEventDialog("Oops...", "Houve um problema ao comprar o ingresso. Tente novamente em instantes.", false);
             }
         });
     }

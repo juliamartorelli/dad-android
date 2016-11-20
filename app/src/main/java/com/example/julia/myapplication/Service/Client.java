@@ -101,6 +101,22 @@ public class Client {
         }, errorListener);
     }
 
+    public void createUser(User user,
+                          final SuccessListener<User> successListener,
+                          final Response.ErrorListener errorListener) {
+
+        final String resources = "/Usuario";
+        request(User.class, Request.Method.POST, resources, null, new Response.Listener<User>() {
+
+            @Override
+            public void onResponse(User response) {
+                successListener.onSuccess(response);
+                Preferences.getInstance().setUserPreferences(response);
+            }
+
+        }, errorListener);
+    }
+
     public void events(final SuccessListener<ArrayList<Event>> successListener,
                        final Response.ErrorListener errorListener) {
 
