@@ -7,7 +7,7 @@ public class User {
 
     @Expose
     @SerializedName("Id")
-    private String id;
+    private Integer id;
 
     @Expose
     @SerializedName("Nome")
@@ -59,14 +59,19 @@ public class User {
         this.email = email;
         this.login = login;
         this.password = password;
-        this.id = "1";
+        this.id = 1;
+        this.active = true;
+        this.celphone = "";
+        this.telephone = "";
+        this.cpf = "68468571415";
+        this.admin = true;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

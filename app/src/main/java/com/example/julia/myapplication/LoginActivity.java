@@ -27,6 +27,10 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.button)
     Button button;
 
+    @BindView(R.id.button_create_user)
+    Button buttonCreateUser;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,12 +45,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(LoginActivity.this, SignUpUserActivity.class);
+                startActivity(it);
+            }
+        });
     }
 
     private void login() {
 
         final User user = new User("julia", "12345");
-        //final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override

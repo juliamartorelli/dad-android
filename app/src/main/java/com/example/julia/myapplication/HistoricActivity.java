@@ -1,16 +1,8 @@
 package com.example.julia.myapplication;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.example.julia.myapplication.Adapter.ListAdapter;
 import com.example.julia.myapplication.Model.Event;
 import com.example.julia.myapplication.Service.Client;
@@ -19,11 +11,8 @@ import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -54,7 +43,7 @@ public class HistoricActivity extends Activity {
                     events.add(event);
                 }
 
-                ListAdapter adapter = new ListAdapter(getActivity(), events);
+                ListAdapter adapter = new ListAdapter(getApplicationContext(), events);
                 listView.setAdapter(adapter);
             }
         }, new ErrorListener() {
@@ -63,30 +52,5 @@ public class HistoricActivity extends Activity {
 
             }
         });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                final Event event = events.get(position);
-                final Intent intent = new Intent(getActivity(), EventActivity.class);
-                intent.putExtra("eventId", event.getId());
-                startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

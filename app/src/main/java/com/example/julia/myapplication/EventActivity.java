@@ -126,7 +126,7 @@ public class EventActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
 
         User user = Preferences.getInstance().getCurrentUser();
-        Ticket ticket = new Ticket(1, true, "name", Integer.valueOf(user.getId()), eventId);
+        Ticket ticket = new Ticket(1, true, "name", user.getId(), eventId);
         Client.getInstance().buyTicket(ticket, new SuccessListener<Ticket>() {
             @Override
             public void onSuccess(Ticket response) {

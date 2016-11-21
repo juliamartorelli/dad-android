@@ -13,6 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.julia.myapplication.Model.User;
 import com.example.julia.myapplication.Service.Client;
+import com.example.julia.myapplication.Service.ErrorListener;
+import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 
 import butterknife.BindView;
@@ -44,11 +46,10 @@ public class SignUpUserActivity extends Activity {
         setContentView(R.layout.activity_signup_user);
         ButterKnife.bind(this);
 
-        final Bundle bundle = getIntent().getExtras();
-
         buttonCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 User user = new User(
                         textViewName.getText().toString(),
                         textViewEmail.getText().toString(),
@@ -60,9 +61,9 @@ public class SignUpUserActivity extends Activity {
                     public void onSuccess(User response) {
                         showSignUpDialog("Sucesso", "Cadastro feito com sucesso! :)", true);
                     }
-                }, new Response.ErrorListener() {
+                }, new ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
+                    public void onError(RestError restError) {
                         showSignUpDialog("Oops...", "Houve um problema ao cadastrar. Tente novamente em instantes.", false);
                     }
                 });
@@ -79,7 +80,7 @@ public class SignUpUserActivity extends Activity {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (success) {
-                            Intent intent = new Intent(SignUpUserActivity.this, EventListActivity.class);
+                            Intent intent = new Intent(SignUpUserActivity.this, MenuDrawerActivity.class);
                             startActivity(intent);
                             finish();
                         }

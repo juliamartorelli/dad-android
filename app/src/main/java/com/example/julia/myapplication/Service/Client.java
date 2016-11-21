@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 //Classe de chamadas do cliente a API
 public class Client {
 
@@ -106,7 +105,7 @@ public class Client {
                           final Response.ErrorListener errorListener) {
 
         final String resources = "/Usuario";
-        request(User.class, Request.Method.POST, resources, null, new Response.Listener<User>() {
+        request(User.class, Request.Method.POST, resources, user, new Response.Listener<User>() {
 
             @Override
             public void onResponse(User response) {
