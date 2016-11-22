@@ -114,6 +114,8 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                                         startActivity(intent);
                                         break;
                                     case 3:
+                                        intent = new Intent(MenuDrawerActivity.this, CreateLocalityActivity.class);
+                                        startActivity(intent);
                                         break;
                                     case 4:
                                         intent = new Intent(MenuDrawerActivity.this, LoginActivity.class);

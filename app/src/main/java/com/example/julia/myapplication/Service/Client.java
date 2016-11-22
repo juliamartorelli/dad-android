@@ -117,11 +117,19 @@ public class Client {
     }
 
     public void createEvent(Event event,
-                           final SuccessListener<Event> successListener,
-                           final Response.ErrorListener errorListener) {
+                                 final SuccessListener<Event> successListener,
+                                 final Response.ErrorListener errorListener) {
 
         final String resources = "/Evento";
         request(Event.class, Request.Method.POST, resources, event, successListener, errorListener);
+    }
+
+    public void createLocality(Locality local,
+                            final SuccessListener<Locality> successListener,
+                            final Response.ErrorListener errorListener) {
+
+        final String resources = "/Localidade";
+        request(Locality.class, Request.Method.POST, resources, local, successListener, errorListener);
     }
 
     public void events(final SuccessListener<ArrayList<Event>> successListener,

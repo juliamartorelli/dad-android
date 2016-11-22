@@ -61,6 +61,32 @@ public class Locality {
     @SerializedName("Ativo")
     private String ativo;
 
+    public Locality(String nome,
+                    String descricao,
+                    String logradouro,
+                    String numero,
+                    String complemento,
+                    String cep,
+                    String bairro,
+                    String cidade,
+                    String estado,
+                    String pais) {
+        this.id = "0";
+        this.nome = nome;
+        this.descricao = descricao;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.cep = cep;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.latitude = "0";
+        this.longitude = "0";
+        this.ativo = "true";
+    }
+
     public String getId() {
         return id;
     }

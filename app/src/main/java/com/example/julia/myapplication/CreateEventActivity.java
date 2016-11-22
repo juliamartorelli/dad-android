@@ -97,7 +97,7 @@ public class CreateEventActivity extends Activity {
               public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                   if (i > 0) {
-                      Double value = Double.valueOf(locals.get(i).getId());
+                      Double value = Double.valueOf(locals.get(i-1).getId());
                       localId = value.intValue();
                   } else {
                       localId = 0;
