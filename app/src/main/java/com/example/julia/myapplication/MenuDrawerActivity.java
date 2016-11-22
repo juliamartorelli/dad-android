@@ -83,7 +83,7 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
 
         navigationItems.add(new NavigationItem("Perfil", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Histórico de compras", R.drawable.ic_cast_dark));
-        navigationItems.add(new NavigationItem("cadastrar evento", R.drawable.ic_cast_dark));
+        navigationItems.add(new NavigationItem("Cadastrar evento", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Cadastrar localidade", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Sair", R.drawable.ic_cast_dark));
 
@@ -101,6 +101,8 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                             @Override
                             public void run() {
 
+                                final Intent intent;
+
                                 switch (position) {
                                     case 0:
                                         //callFragment(R.id.placeholder, new UserProfileFragment());
@@ -108,11 +110,13 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                                     case 1:
                                         break;
                                     case 2:
+                                        intent = new Intent(MenuDrawerActivity.this, CreateEventActivity.class);
+                                        startActivity(intent);
                                         break;
                                     case 3:
                                         break;
                                     case 4:
-                                        final Intent intent = new Intent(MenuDrawerActivity.this, LoginActivity.class);
+                                        intent = new Intent(MenuDrawerActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                         Preferences.getInstance().clear();
                                         break;

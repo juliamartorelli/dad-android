@@ -35,6 +35,8 @@
         <activity android:name=".EventActivity"/>
 
         <activity android:name=".SignUpUserActivity"/>
+
+        <activity android:name=".CreateEventActivity"/>
     </application>
 
 </manifest>

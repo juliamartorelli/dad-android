@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class Locality {
 
     @Expose
-    @SerializedName("id")
+    @SerializedName("Id")
     private String id;
 
     @Expose

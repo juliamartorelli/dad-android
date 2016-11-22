@@ -101,8 +101,8 @@ public class Client {
     }
 
     public void createUser(User user,
-                          final SuccessListener<User> successListener,
-                          final Response.ErrorListener errorListener) {
+                                final SuccessListener<User> successListener,
+                                final Response.ErrorListener errorListener) {
 
         final String resources = "/Usuario";
         request(User.class, Request.Method.POST, resources, user, new Response.Listener<User>() {
@@ -116,10 +116,25 @@ public class Client {
         }, errorListener);
     }
 
+    public void createEvent(Event event,
+                           final SuccessListener<Event> successListener,
+                           final Response.ErrorListener errorListener) {
+
+        final String resources = "/Evento";
+        request(Event.class, Request.Method.POST, resources, event, successListener, errorListener);
+    }
+
     public void events(final SuccessListener<ArrayList<Event>> successListener,
                        final Response.ErrorListener errorListener) {
 
         final String resources = "/Evento";
+        request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
+    }
+
+    public void localities(final SuccessListener<ArrayList<Locality>> successListener,
+                       final Response.ErrorListener errorListener) {
+
+        final String resources = "/Localidade";
         request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 

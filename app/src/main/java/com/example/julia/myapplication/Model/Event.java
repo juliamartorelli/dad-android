@@ -3,6 +3,10 @@ package com.example.julia.myapplication.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Event  {
 
     @Expose
@@ -39,6 +43,23 @@ public class Event  {
 
     public Event(String nome) {
         this.name = nome;
+    }
+
+    public Event(String nome, String date, String time, String price, Integer idLocality, String image) throws ParseException {
+        this.name = nome;
+
+        String dateTime = date + " " + time;
+        SimpleDateFormat humanFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date dateEvent = humanFormat.parse(dateTime);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        this.date = format.format(dateEvent).toString();
+
+        this.price = price.replace(',', '.');
+        this.idLocality = idLocality;
+        this.urlImage = image;
+        this.id = 0;
+        this.quantity = "0";
+        this.active = "true";
     }
 
     public Event() {}

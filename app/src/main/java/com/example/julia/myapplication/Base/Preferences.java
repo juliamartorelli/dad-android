@@ -46,7 +46,9 @@ public class Preferences {
     public void setUserPreferences(final User user) {
 
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(USER_ID, user.getId().toString());
+        if (user.getId() != null) {
+            editor.putString(USER_ID, user.getId().toString());
+        }
         editor.putString(USER_AUTH, user.getAuthorization());
         editor.putString(USER_NAME, user.getName());
         editor.putString(USER_EMAIL, user.getEmail());
@@ -56,7 +58,11 @@ public class Preferences {
     public User getCurrentUser() {
 
         User user = new User();
-        user.setId(Integer.valueOf(sharedPreferences.getString(USER_ID, "")));
+
+        String id = sharedPreferences.getString(USER_ID, "");
+        if (!id.isEmpty()) {
+            user.setId(Integer.valueOf(id));
+        }
         user.setName(sharedPreferences.getString(USER_NAME, ""));
         user.setAuthorization(sharedPreferences.getString(USER_AUTH, ""));
         user.setEmail(sharedPreferences.getString(USER_EMAIL, ""));
