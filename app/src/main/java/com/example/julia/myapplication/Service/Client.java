@@ -124,6 +124,39 @@ public class Client {
         request(Event.class, Request.Method.POST, resources, event, successListener, errorListener);
     }
 
+    public void editEvent(Event event,
+                            final SuccessListener<Event> successListener,
+                            final Response.ErrorListener errorListener) {
+
+        final String resources = "/Evento/" + event.getId();
+        request(Event.class, Request.Method.PUT, resources, event, successListener, errorListener);
+    }
+
+
+    public void editLocality(Locality local,
+                          final SuccessListener<Locality> successListener,
+                          final Response.ErrorListener errorListener) {
+
+        final String resources = "/Localidade/" + local.getId();
+        request(Locality.class, Request.Method.PUT, resources, local, successListener, errorListener);
+    }
+
+    public void deleteEvent(Event event,
+                          final SuccessListener<Event> successListener,
+                          final Response.ErrorListener errorListener) {
+
+        final String resources = "/Evento/" + event.getId();
+        request(Event.class, Request.Method.DELETE, resources, event, successListener, errorListener);
+    }
+
+    public void deleteLocality(Locality local,
+                            final SuccessListener<Locality> successListener,
+                            final Response.ErrorListener errorListener) {
+
+        final String resources = "/Localidade/" + Double.valueOf(local.getId()).intValue();
+        request(Locality.class, Request.Method.DELETE, resources, local, successListener, errorListener);
+    }
+
     public void createLocality(Locality local,
                             final SuccessListener<Locality> successListener,
                             final Response.ErrorListener errorListener) {

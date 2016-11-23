@@ -61,6 +61,8 @@ public class Locality {
     @SerializedName("Ativo")
     private String ativo;
 
+    public Locality () {}
+
     public Locality(String nome,
                     String descricao,
                     String logradouro,

@@ -84,7 +84,7 @@ public class EventActivity extends Activity implements View.OnClickListener {
                 });
 
                 textViewEventName.setText(response.getName());
-                textViewTicketPrice.setText("R$" + response.getPrice().replace('.',','));
+                textViewTicketPrice.setText("R$" + response.getPrice().replace('.',',') + "0");
 
                 try {
                     SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");

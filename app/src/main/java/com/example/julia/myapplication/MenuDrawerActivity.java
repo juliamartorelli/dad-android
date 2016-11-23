@@ -84,7 +84,9 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
         navigationItems.add(new NavigationItem("Perfil", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Histórico de compras", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Cadastrar evento", R.drawable.ic_cast_dark));
+        navigationItems.add(new NavigationItem("Editar evento", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Cadastrar localidade", R.drawable.ic_cast_dark));
+        navigationItems.add(new NavigationItem("Editar localidade", R.drawable.ic_cast_dark));
         navigationItems.add(new NavigationItem("Sair", R.drawable.ic_cast_dark));
 
         final ListView menuList = (ListView) findViewById(R.id.navigation_menu_list);
@@ -114,10 +116,18 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
                                         startActivity(intent);
                                         break;
                                     case 3:
-                                        intent = new Intent(MenuDrawerActivity.this, CreateLocalityActivity.class);
+                                        intent = new Intent(MenuDrawerActivity.this, EditEventActivity.class);
                                         startActivity(intent);
                                         break;
                                     case 4:
+                                        intent = new Intent(MenuDrawerActivity.this, CreateLocalityActivity.class);
+                                        startActivity(intent);
+                                        break;
+                                    case 5:
+                                        intent = new Intent(MenuDrawerActivity.this, EditLocalityActivity.class);
+                                        startActivity(intent);
+                                        break;
+                                    case 6:
                                         intent = new Intent(MenuDrawerActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                         Preferences.getInstance().clear();

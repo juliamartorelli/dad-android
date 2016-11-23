@@ -48,11 +48,7 @@ public class Event  {
     public Event(String nome, String date, String time, String price, Integer idLocality, String image) throws ParseException {
         this.name = nome;
 
-        String dateTime = date + " " + time;
-        SimpleDateFormat humanFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Date dateEvent = humanFormat.parse(dateTime);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        this.date = format.format(dateEvent).toString();
+        setDate(date + " " + time);
 
         this.price = price.replace(',', '.');
         this.idLocality = idLocality;
@@ -92,8 +88,11 @@ public class Event  {
         return date;
     }
 
-    public void setDate(String data) {
-        this.date = data;
+    public void setDate(String dateTime) throws ParseException {
+        SimpleDateFormat humanFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date dateEvent = humanFormat.parse(dateTime);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        this.date = format.format(dateEvent).toString();
     }
 
     public String getActive() {
