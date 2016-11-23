@@ -54,7 +54,7 @@ public class Event  {
         this.idLocality = idLocality;
         this.urlImage = image;
         this.id = 0;
-        this.quantity = "0";
+        this.quantity = "1000";
         this.active = "true";
     }
 
