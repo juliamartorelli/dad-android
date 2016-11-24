@@ -33,4 +33,44 @@ public class Ticket {
         this.idClient = idClient;
         this.idEvent = idEvent;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
+    }
+
+    public Integer getIdEvent() {
+        return idEvent;
+    }
+
+    public void setIdEvent(Integer idEvent) {
+        this.idEvent = idEvent;
+    }
 }

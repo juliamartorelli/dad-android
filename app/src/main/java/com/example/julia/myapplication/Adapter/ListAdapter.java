@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.julia.myapplication.Model.Event;
 import com.example.julia.myapplication.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-
 import java.util.ArrayList;
 import java.util.List;
 

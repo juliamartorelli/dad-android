@@ -107,9 +107,12 @@ public class MenuDrawerActivity extends AppCompatActivity implements NavigationV
 
                                 switch (position) {
                                     case 0:
-                                        //callFragment(R.id.placeholder, new UserProfileFragment());
+                                        intent = new Intent(MenuDrawerActivity.this, EditProfileActivity.class);
+                                        startActivity(intent);
                                         break;
                                     case 1:
+                                        intent = new Intent(MenuDrawerActivity.this, HistoricActivity.class);
+                                        startActivity(intent);
                                         break;
                                     case 2:
                                         intent = new Intent(MenuDrawerActivity.this, CreateEventActivity.class);
