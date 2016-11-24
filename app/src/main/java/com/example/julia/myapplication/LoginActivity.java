@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login() {
 
-        final User user = new User("julia", "12345");
+        final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
