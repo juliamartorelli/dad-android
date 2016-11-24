@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -78,4 +79,5 @@ dependencies {
 
     compile 'com.android.support:design:25.0.0'
 
+    compile 'com.android.support:multidex:1.0.0'
 }
