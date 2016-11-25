@@ -54,7 +54,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String login, String password){
+    public User(String name, String cpf, String email, String login, String password){
         this.name = name;
         this.email = email;
         this.login = login;
@@ -63,11 +63,11 @@ public class User {
         this.active = true;
         this.celphone = "";
         this.telephone = "";
-        this.cpf = "60911059814";
+        this.cpf = cpf;
         this.admin = true;
     }
 
-    public User(String name, String cpf, String email, String login, String password){
+    public User(String name, String email, String login, String password){
         this.name = name;
         this.email = email;
         this.login = login;

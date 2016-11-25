@@ -23,6 +23,9 @@ public class EditProfileActivity extends Activity {
     @BindView(R.id.name)
     TextView textViewName;
 
+    @BindView(R.id.cpf)
+    TextView textViewCpf;
+
     @BindView(R.id.email)
     TextView textViewEmail;
 
@@ -55,6 +58,7 @@ public class EditProfileActivity extends Activity {
 
                 user = response;
                 textViewName.setText(user.getName());
+                textViewCpf.setText(user.getCpf());
                 textViewEmail.setText(user.getEmail());
                 textViewLogin.setText(user.getLogin());
                 textViewPassword.setText(user.getPassword());
@@ -70,6 +74,8 @@ public class EditProfileActivity extends Activity {
 
                 user = new User(
                         textViewName.getText().toString(),
+                        //se o cpf for diferente do cpf atual, permanece o cpf anterior.
+                        textViewCpf.getText().toString(),
                         textViewEmail.getText().toString(),
                         textViewLogin.getText().toString(),
                         textViewPassword.getText().toString());

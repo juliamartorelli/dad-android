@@ -42,6 +42,20 @@
             android:layout_marginTop="10dp">
 
             <EditText
+                android:id="@+id/cpf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Cpf"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
                 android:id="@+id/email"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -88,7 +102,7 @@
 
         <Button
             android:id="@+id/button_delete"
-            android:text="Desativar conta"
+            android:text="Excluir conta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button"
