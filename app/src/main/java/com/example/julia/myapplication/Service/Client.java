@@ -223,11 +223,8 @@ public class Client {
                        final SuccessListener<ArrayList<Ticket>> successListener,
                        final Response.ErrorListener errorListener) {
 
-        HashMap<String, Integer> params = new HashMap<>();
-        params.put("IdCliente", idClient);
-
-        final String resources = "/Ingresso";
-        request(ArrayList.class, Request.Method.GET, resources, params, successListener, errorListener);
+        final String resources = "/Ingresso?idCliente=" + idClient;
+        request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 
     public void buyTicket(final Ticket ticket,
