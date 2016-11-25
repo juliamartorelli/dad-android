@@ -63,7 +63,20 @@ public class User {
         this.active = true;
         this.celphone = "";
         this.telephone = "";
-        this.cpf = "68468571415";
+        this.cpf = "60911059814";
+        this.admin = true;
+    }
+
+    public User(String name, String cpf, String email, String login, String password){
+        this.name = name;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.id = 1;
+        this.active = true;
+        this.celphone = "";
+        this.telephone = "";
+        this.cpf = "";
         this.admin = true;
     }
 

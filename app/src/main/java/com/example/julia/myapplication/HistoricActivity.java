@@ -2,7 +2,10 @@ package com.example.julia.myapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.julia.myapplication.Adapter.ListAdapter;
 import com.example.julia.myapplication.Base.Preferences;
@@ -65,6 +68,17 @@ public class HistoricActivity extends Activity {
                 pd.dismiss();
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                final Event event = events.get(position);
+                final Intent intent = new Intent(HistoricActivity.this, EventActivity.class);
+                intent.putExtra("eventId", event.getId());
+                intent.putExtra("ingresso", true);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getEvent(int idEvent) {
@@ -73,7 +87,9 @@ public class HistoricActivity extends Activity {
             @Override
             public void onSuccess(Event response) {
 
-                events.add(response);
+                if(response.getActive() == "true") {
+                    events.add(response);
+                }
                 adapter = new ListAdapter(getApplicationContext(), events);
                 listView.setAdapter(adapter);
             }

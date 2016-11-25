@@ -69,6 +69,11 @@ public class EventActivity extends Activity implements View.OnClickListener {
 
         final Bundle bundle = getIntent().getExtras();
         eventId = bundle.getInt("eventId");
+        boolean ticketScreen = bundle.getBoolean("ingresso");
+
+        if(ticketScreen) {
+            button.setVisibility(View.GONE);
+        }
 
         Client.getInstance().event(eventId, new SuccessListener<Event>() {
             @Override

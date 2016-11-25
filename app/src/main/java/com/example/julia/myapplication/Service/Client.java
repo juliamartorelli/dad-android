@@ -76,7 +76,7 @@ public class Client {
         GenericRequest request = new GenericRequest<>(type, method, finalUrl,
                 requestBodyString, successListener, errorListener);
 
-        //request.setShouldCache(false);
+        request.setShouldCache(false);
         queue.add(request);
     }
 

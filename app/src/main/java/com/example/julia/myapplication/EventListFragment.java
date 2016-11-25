@@ -49,7 +49,9 @@ public class EventListFragment extends Fragment {
                 for (Object o : response) {
                     JsonObject jsonObject = gson.toJsonTree(o).getAsJsonObject();
                     Event event = new Gson().fromJson(jsonObject, Event.class);
-                    events.add(event);
+                    if (event.getActive() == "true") {
+                        events.add(event);
+                    }
                 }
 
                 ListAdapter adapter = new ListAdapter(getActivity(), events);
@@ -68,6 +70,7 @@ public class EventListFragment extends Fragment {
                         final Event event = events.get(position);
                         final Intent intent = new Intent(getActivity(), EventActivity.class);
                         intent.putExtra("eventId", event.getId());
+                        intent.putExtra("ingresso", false);
                         startActivity(intent);
                     }
                 });

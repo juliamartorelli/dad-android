@@ -27,6 +27,9 @@ public class SignUpUserActivity extends Activity {
     @BindView(R.id.name)
     TextView textViewName;
 
+    @BindView(R.id.cpf)
+    TextView textViewCpf;
+
     @BindView(R.id.email)
     TextView textViewEmail;
 
@@ -52,6 +55,7 @@ public class SignUpUserActivity extends Activity {
 
                 User user = new User(
                         textViewName.getText().toString(),
+                        textViewCpf.getText().toString(),
                         textViewEmail.getText().toString(),
                         textViewLogin.getText().toString(),
                         textViewPassword.getText().toString());
