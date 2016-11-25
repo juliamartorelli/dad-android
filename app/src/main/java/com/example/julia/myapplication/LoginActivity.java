@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.julia.myapplication.Model.User;
 import com.example.julia.myapplication.Service.Client;
@@ -29,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.button_create_user)
     Button buttonCreateUser;
+
+    @BindView(R.id.imageView1)
+    ImageView imageView;
 
 
     @Override
