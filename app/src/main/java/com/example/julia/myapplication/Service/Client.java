@@ -100,7 +100,7 @@ public class Client {
         }, errorListener);
     }
 
-    public void createUser(User user,
+    public void createUser(final User user,
                                 final SuccessListener<User> successListener,
                                 final Response.ErrorListener errorListener) {
 
@@ -116,7 +116,7 @@ public class Client {
         }, errorListener);
     }
 
-    public void createEvent(Event event,
+    public void createEvent(final Event event,
                                  final SuccessListener<Event> successListener,
                                  final Response.ErrorListener errorListener) {
 
@@ -124,7 +124,7 @@ public class Client {
         request(Event.class, Request.Method.POST, resources, event, successListener, errorListener);
     }
 
-    public void editEvent(Event event,
+    public void editEvent(final Event event,
                             final SuccessListener<Event> successListener,
                             final Response.ErrorListener errorListener) {
 
@@ -133,7 +133,7 @@ public class Client {
     }
 
 
-    public void editLocality(Locality local,
+    public void editLocality(final Locality local,
                           final SuccessListener<Locality> successListener,
                           final Response.ErrorListener errorListener) {
 
@@ -141,7 +141,15 @@ public class Client {
         request(Locality.class, Request.Method.PUT, resources, local, successListener, errorListener);
     }
 
-    public void deleteEvent(Event event,
+    public void editUser(final User user,
+                             final SuccessListener<User> successListener,
+                             final Response.ErrorListener errorListener) {
+
+        final String resources = "/Usuario/" + user.getId();
+        request(User.class, Request.Method.PUT, resources, user, successListener, errorListener);
+    }
+
+    public void deleteEvent(final Event event,
                           final SuccessListener<Event> successListener,
                           final Response.ErrorListener errorListener) {
 
@@ -149,7 +157,7 @@ public class Client {
         request(Event.class, Request.Method.DELETE, resources, event, successListener, errorListener);
     }
 
-    public void deleteLocality(Locality local,
+    public void deleteLocality(final Locality local,
                             final SuccessListener<Locality> successListener,
                             final Response.ErrorListener errorListener) {
 
@@ -157,7 +165,15 @@ public class Client {
         request(Locality.class, Request.Method.DELETE, resources, local, successListener, errorListener);
     }
 
-    public void createLocality(Locality local,
+    public void deleteUser(final int id,
+                               final SuccessListener<User> successListener,
+                               final Response.ErrorListener errorListener) {
+
+        final String resources = "/Usuario/" + id;
+        request(User.class, Request.Method.DELETE, resources, id, successListener, errorListener);
+    }
+
+    public void createLocality(final Locality local,
                             final SuccessListener<Locality> successListener,
                             final Response.ErrorListener errorListener) {
 
@@ -179,6 +195,14 @@ public class Client {
         request(ArrayList.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 
+    public void user(final int id,
+                      final SuccessListener<User> successListener,
+                      final Response.ErrorListener errorListener) {
+
+        final String resources = "/Usuario/" + id;
+        request(User.class, Request.Method.GET, resources, null, successListener, errorListener);
+    }
+
     public void event(final int id,
                       final SuccessListener<Event> successListener,
                       final Response.ErrorListener errorListener) {
@@ -188,14 +212,25 @@ public class Client {
     }
 
     public void locality(final int id,
-                      final SuccessListener<Locality> successListener,
-                      final Response.ErrorListener errorListener) {
+                          final SuccessListener<Locality> successListener,
+                          final Response.ErrorListener errorListener) {
 
         final String resources = "/Localidade/" + id;
         request(Locality.class, Request.Method.GET, resources, null, successListener, errorListener);
     }
 
-    public void buyTicket(Ticket ticket,
+    public void tickets(final int idClient,
+                       final SuccessListener<ArrayList<Ticket>> successListener,
+                       final Response.ErrorListener errorListener) {
+
+        HashMap<String, Integer> params = new HashMap<>();
+        params.put("IdCliente", idClient);
+
+        final String resources = "/Ingresso";
+        request(ArrayList.class, Request.Method.GET, resources, params, successListener, errorListener);
+    }
+
+    public void buyTicket(final Ticket ticket,
                          final SuccessListener<Ticket> successListener,
                          final Response.ErrorListener errorListener) {
 

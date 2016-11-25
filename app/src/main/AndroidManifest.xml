@@ -43,6 +43,10 @@
         <activity android:name=".EditEventActivity"/>
 
         <activity android:name=".EditLocalityActivity"/>
+
+        <activity android:name=".EditProfileActivity"/>
+
+        <activity android:name=".HistoricActivity"/>
     </application>
 
 </manifest>

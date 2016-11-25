@@ -17,7 +17,6 @@ import com.example.julia.myapplication.Service.RestError;
 import com.example.julia.myapplication.Service.SuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -25,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class EventListFragment extends Fragment {
 
-    @BindView(R.id.recipe_list_view)
+    @BindView(R.id.list_view)
     ListView listView;
 
     private List<Event> events;
@@ -74,21 +73,6 @@ public class EventListFragment extends Fragment {
                 });
 
         return fragmentView;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
 

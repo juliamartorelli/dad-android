@@ -1,6 +1,8 @@
 package com.example.julia.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.julia.myapplication.Base.Preferences;
 import com.example.julia.myapplication.Model.User;
 import com.example.julia.myapplication.Service.Client;
 import com.example.julia.myapplication.Service.ErrorListener;
@@ -60,18 +63,36 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login() {
 
-        final User user = new User("julia", "12345");
+        final User user = new User(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
         Client.getInstance().login(user, new SuccessListener<User>() {
             @Override
             public void onSuccess(User response) {
-                Intent it = new Intent(LoginActivity.this, MenuDrawerActivity.class);
-                startActivity(it);
+                if (!response.getActive()) {
+                    showLoginDialog("Oops...", "Houve um problema ao realizar o login. Tente novamente em instantes.");
+                } else {
+                    Intent it = new Intent(LoginActivity.this, MenuDrawerActivity.class);
+                    startActivity(it);
+                }
         }
         }, new ErrorListener() {
             @Override
-            public void onError(RestError restError) { }
+            public void onError(RestError restError) {
+            }
         });
+    }
+
+    private void showLoginDialog(final String title,
+                                  final String description) {
+
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(description)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .show();
     }
 }
 
